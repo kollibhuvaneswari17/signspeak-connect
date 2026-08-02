@@ -48,6 +48,10 @@ Built for the **SDG 9 Innovation Hackathon**.
 * Stop
 * Please
 * Water
+* I love you
+* Okay
+* Good
+* Peace
 
 ##  Workflow
 
@@ -63,7 +67,7 @@ Camera → OpenCV → MediaPipe → AI Model → Text → Speech
 
 git clone <repository-url>
 
-cd frontend
+cd signspeak-connect
 npm install
 npm run dev
 
@@ -78,5 +82,3 @@ uvicorn main:app --reload
 * Offline mode
 * Mobile deployment
 * AI-powered conversation assistant
-
-Built with ❤️ for the SDG 9 Innovation Hackathon.
