@@ -99,6 +99,75 @@ const GESTURES: Gesture[] = [
     match: (_lm, f) =>
       f.index && !f.middle && !f.ring && !f.pinky ? 0.9 : 0,
   },
+  {
+  name: "GOOD",
+  text: "Good",
+  match: (_lm, f) =>
+    f.thumb && !f.index && !f.middle && !f.ring && !f.pinky
+      ? 0.96
+      : 0,
+  },
+  {
+  name: "BAD",
+  text: "Bad",
+  match: (lm, f) => {
+    const thumbDown = lm[4].y > lm[2].y;
+    return thumbDown &&
+      f.thumb &&
+      !f.index &&
+      !f.middle &&
+      !f.ring &&
+      !f.pinky
+        ? 0.95
+        : 0;
+  },
+  },
+  {
+  name: "OK",
+  text: "Okay",
+  match: (lm, f) => {
+    const touching = dist(lm[4], lm[8]) < 0.05;
+
+    return touching &&
+      f.middle &&
+      f.ring &&
+      f.pinky
+        ? 0.95
+        : 0;
+  },
+  },
+  {
+  name: "PEACE",
+  text: "Peace",
+  match: (_lm, f) =>
+    f.index &&
+    f.middle &&
+    !f.ring &&
+    !f.pinky &&
+    !f.thumb
+      ? 0.95
+      : 0,
+  },
+  {
+  name: "I LOVE YOU",
+  text: "I Love You",
+  match: (_lm, f) =>
+    f.thumb &&
+    f.index &&
+    !f.middle &&
+    !f.ring &&
+    f.pinky
+      ? 0.98
+      : 0,
+  },
+  {
+    name: "LOVE",
+    text: "Love",
+    match: (_lm, f) =>
+      f.thumb && f.pinky && !f.index && !f.middle && !f.ring
+        ? 0.90
+        : 0,
+  },
 ];
 
 export function recognizeGesture(landmarks: Landmark[]): GestureMatch | null {
